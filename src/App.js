@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import PostList from './components/PostList';
 // import ClassCounter from './components/ClassCounter';
 // import Counter from './components/Counter';
-import PostItem from './components/PostItem';
 import './styles/App.css'
 
 // 22-04   23/8
@@ -19,13 +19,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1 style={{textAlign:'center'}}>Post's List</h1>
-    {posts.map(post=>
-      
-        <PostItem post={post} key={post.id} />
-      
-    )}
 
+      <form>
+        <input type="text" placeholder='Topic' />
+        <input type="text" placeholder='Description' />
+        <button>Create</button>
+      </form>
+
+      <PostList posts={posts} title = "Post's List"/>
 
     </div>
   );
