@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import ClassCounter from './components/ClassCounter';
-import Counter from './components/Counter';
+import React from 'react';
+// import ClassCounter from './components/ClassCounter';
+// import Counter from './components/Counter';
+import PostItem from './components/PostItem';
 import './styles/App.css'
 
 // 22-04   23/8
@@ -8,24 +9,26 @@ import './styles/App.css'
 
 function App() {
 
-  const [value, setValue] = useState('Input Text')
+  // const [value, setValue] = useState('Input Text')
 
 
 
   return (
     <div className="App">
-      
-      <div className="post">
-          <div className="post__content">
-            <strong>1. Javascript</strong>
-            <div>
-              Javascript - programming language
-            </div>
-          </div>
-          <div className="post__btns">
-            <button>Delete</button>
-          </div>
-      </div>
+
+      <PostItem
+        post={{ id: 1, title: 'Javascript', body: 'Description placeholder' }} />
+
+      <PostItem
+        post={{ id: 2, title: 'Java', body: 'Parent of JS' }} />
+
+      <PostItem
+        post={{ id: 3, title: 'Pythom', body: 'Wrong letter inside' }} />
+
+      <PostItem
+        post={{ id: 4, title: 'C++', body: 'The buller' }} />
+
+
 
     </div>
   );
