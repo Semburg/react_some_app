@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import PostList from './components/PostList';
+import MyButton from './components/UI/button/MyButton';
+import MyInput from './components/UI/input/MyInput';
 // import ClassCounter from './components/ClassCounter';
 // import Counter from './components/Counter';
 import './styles/App.css'
 
-// 22-04   23/8
+// 42:39   24/8
 
 
 function App() {
@@ -17,16 +19,30 @@ function App() {
   ])
 
 
+  const [title, setTitle] = useState('')
+
+  const addNewPost = (e) => {
+    e.preventDefault()
+    console.log(title);
+  }
+
+
+
   return (
     <div className="App">
 
       <form>
-        <input type="text" placeholder='Topic' />
-        <input type="text" placeholder='Description' />
-        <button>Create</button>
+        <MyInput
+          value={title}
+          onChange = {e => setTitle(e.target.value)}
+          type="text"
+          placeholder='Topic'
+        />
+        <MyInput type="text" placeholder='Description' />
+        <MyButton onClick={addNewPost} >Create</MyButton>
       </form>
 
-      <PostList posts={posts} title = "Post's List"/>
+      <PostList posts={posts} title="Post's List" />
 
     </div>
   );
