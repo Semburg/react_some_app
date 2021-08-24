@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PostList from './components/PostList';
 import MyButton from './components/UI/button/MyButton';
 import MyInput from './components/UI/input/MyInput';
@@ -21,9 +21,13 @@ function App() {
 
   const [title, setTitle] = useState('')
 
+  //  other road - hook useRef
+  const bodyInputRef = useRef()
+
   const addNewPost = (e) => {
     e.preventDefault()
     console.log(title);
+    console.log( bodyInputRef.current.value );
   }
 
 
@@ -34,11 +38,17 @@ function App() {
       <form>
         <MyInput
           value={title}
-          onChange = {e => setTitle(e.target.value)}
+          onChange={e => setTitle(e.target.value)}
           type="text"
           placeholder='Topic'
         />
-        <MyInput type="text" placeholder='Description' />
+
+
+        <MyInput
+          ref = {bodyInputRef}
+          type="text"
+          placeholder='Description'
+        />
         <MyButton onClick={addNewPost} >Create</MyButton>
       </form>
 
