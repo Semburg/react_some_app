@@ -6,7 +6,7 @@ import MyInput from './components/UI/input/MyInput';
 // import Counter from './components/Counter';
 import './styles/App.css'
 
-// 42:39   24/8
+// 56:13   25/8
 
 
 function App() {
@@ -20,14 +20,27 @@ function App() {
 
 
   const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
 
   //  other road - hook useRef
-  const bodyInputRef = useRef()
+  // const bodyInputRef = useRef()
 
   const addNewPost = (e) => {
     e.preventDefault()
-    console.log(title);
-    console.log( bodyInputRef.current.value );
+    const newPost = {
+      id: Date.now(),
+      title,
+      body,
+    }
+    setPosts([...posts, newPost])
+    setTitle('')
+    setBody('')
+
+    // console.log(newPost);
+
+
+    // e.preventDefault()
+    // console.log(title);
   }
 
 
@@ -45,7 +58,8 @@ function App() {
 
 
         <MyInput
-          ref = {bodyInputRef}
+          value={body}
+          onChange={e => setBody(e.target.value)}
           type="text"
           placeholder='Description'
         />
